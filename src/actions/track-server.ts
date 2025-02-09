@@ -38,7 +38,10 @@ export class TrackServer extends SingletonAction<TrackServerSettings> {
         `data:image/svg+xml,${encodeURIComponent(svg)}`,
       );
     }
+    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const data: any = await response.json();
+
     if (!data["response"]["servers"][0]) {
       streamDeck.logger.info("server offline?");
       const svg = `<svg width="100" height="100" style="background-color: #136699">
