@@ -1,0 +1,15 @@
+name: Run Eslint
+
+on: [push]
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Set up pnpm
+              uses: pnpm/action-setup@v4
+            - name: Install modules
+              run: pnpm i
+            - name: Run ESLint
+              run: pnpm run lint

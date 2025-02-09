@@ -1,0 +1,22 @@
+name: Build Stream Deck Plugin and publish as Artifact
+
+on: [push]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Set up pnpm
+              uses: pnpm/action-setup@v4
+            - name: Install Stream Deck CLI
+              run: pnpm add -g @elgato/cli
+            - name: Install modules
+              run: pnpm i
+            - name: Package plugin
+              run: streamdeck pack ./tf.stilk.steam-server-stats.sdPlugin
+            - name: Upload artifact finally
+              uses: actions/upload-artifact@v4
+              with:
+                name: steam-server-stats-plugin-${{ github.sha }}
+                path: tf.stilk.steam-server-stats.streamDeckPlugin

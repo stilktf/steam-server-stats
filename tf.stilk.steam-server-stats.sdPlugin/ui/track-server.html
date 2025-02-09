@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head lang="en">
+    <title>Track Server Settings</title>
+    <meta charset="utf-8" />
+    <script src="https://sdpi-components.dev/releases/v3/sdpi-components.js"></script>
+  </head>
+
+  <body>
+    <!--
+        Learn more about property inspector components at https://sdpi-components.dev/docs/components
+    -->
+    <sdpi-item label="Server Address">
+      <sdpi-textfield
+        setting="serverAddress"
+        pattern="^\b(?:\d{1,3}\.){3}\d{1,3}:\d{1,5}\b$"
+        placeholder="127.0.0.1:27015"
+        required
+      />
+    </sdpi-item>
+    <sdpi-item label="Steam API Key">
+      <sdpi-textfield
+        setting="steamApiKey"
+        placeholder="Your API key here"
+        required
+      />
+    </sdpi-item>
+    <p>
+      Get your Steam API key from
+      <a href="https://steamcommunity.com/dev/apikey">here</a>.
+    </p>
+  </body>
+</html>

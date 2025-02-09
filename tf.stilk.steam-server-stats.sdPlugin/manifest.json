@@ -1,0 +1,47 @@
+{
+	"Name": "Steam Server Stats",
+	"Version": "0.1.0.0",
+	"Author": "Stilk",
+	"Actions": [
+		{
+			"Name": "Track Server",
+			"UUID": "tf.stilk.steam-server-stats.track-server",
+			"Icon": "imgs/actions/track-server/icon",
+			"Tooltip": "Track a Steam game server!",
+			"PropertyInspectorPath": "ui/track-server.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/track-server/key",
+					"TitleAlignment": "top"
+				}
+			]
+		}
+	],
+	"Category": "Steam Server Stats",
+	"CategoryIcon": "imgs/plugin/category-icon",
+	"CodePath": "bin/plugin.js",
+	"Description": "Get stats for your favourite game server that uses Steam's network, right on your Stream Deck.",
+	"Icon": "imgs/plugin/marketplace",
+	"SDKVersion": 2,
+	"Software": {
+		"MinimumVersion": "6.4"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "12"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Nodejs": {
+		"Version": "20",
+		"Debug": "enabled"
+	},
+	"UUID": "tf.stilk.steam-server-stats"
+}
