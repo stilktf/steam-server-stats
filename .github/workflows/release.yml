@@ -1,0 +1,32 @@
+name: Create Release
+
+on:
+    push:
+        tags:
+            - 'v*.*.*'
+
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Set up pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                version: 10
+            - name: Install Stream Deck CLI
+              run: pnpm i -g @elgato/cli
+            - name: Install modules
+              run: pnpm i
+            - name: Build
+              run: pnpm run build
+            - name: Package plugin
+              run: streamdeck pack ./tf.stilk.steam-server-stats.sdPlugin
+            - name: Get tag
+              run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+            - name: Create release
+              uses: ncipollo/release-action@v1
+              with:
+                tag: ${{ env.RELEASE_VERSION }}
+                name: Release ${{ env.RELEASE_VERSION }}
+                artifacts: "tf.stilk.steam-server-stats.streamDeckPlugin"
